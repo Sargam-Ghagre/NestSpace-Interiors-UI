@@ -8,16 +8,15 @@ export function HeroSection() {
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Background Image - Large & Immersive */}
 
-<div className="absolute inset-0 z-0">
-  <Image
-    src="/images/hero-interior.jpg"
-    alt="Luxury interior design"
-    fill
-    className="object-cover scale-[1.02]"
-    priority
-    fetchPriority="high"
-    sizes="100vw"
-  />
+<Image
+  src="/images/hero-interior.jpg"
+  alt="Luxury interior design"
+  fill
+  className="object-cover scale-[1.02]"
+  priority
+  fetchPriority="high"
+  sizes="100vw"
+/>
 
 
 
