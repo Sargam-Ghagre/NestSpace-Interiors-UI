@@ -55,7 +55,43 @@ git checkout -b feat/your-feature-name
   ```
 
 ### Step 4: Commit and Push
-Create clear semantic commits:
+
+This project enforces **Conventional Commits** via Husky + commitlint. Non-conforming commit messages are rejected at commit time.
+
+**Format:**
+```
+<type>(<optional scope>): <short description>
+```
+
+**Allowed types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+
+#### ✅ Good commits
+```bash
+git commit -m "feat: add room style filters to design page"
+git commit -m "fix: resolve broken image path in hero section"
+git commit -m "docs: update contributing guide with commit rules"
+git commit -m "refactor(portfolio): extract card into reusable component"
+git commit -m "perf(hero): convert PNG to WebP for faster LCP"
+git commit -m "chore: update dependencies to latest versions"
+```
+
+#### ❌ Bad commits — will be rejected
+```bash
+git commit -m "updated stuff"           # no type prefix
+git commit -m "Fix"                     # vague, no description
+git commit -m "FEAT: add filters"       # type must be lowercase
+git commit -m "feat : add filters"      # no space before colon
+git commit -m "added new feature to design page that lets users filter rooms by style"  # subject too long (>72 chars)
+git commit -m "wip"                     # not a valid type
+```
+
+**Rules enforced:**
+- Type must be one of the allowed types (lowercase)
+- Subject must not be empty
+- Subject must not end with a period
+- Subject must not exceed 72 characters
+- No uppercase type (e.g. `FEAT:` is invalid)
+
 ```bash
 git add .
 git commit -m "feat: add room style filters to design page"
