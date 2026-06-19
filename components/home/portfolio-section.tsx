@@ -57,7 +57,7 @@ const portfolioItems = [
 
 export function PortfolioSection() {
   const headerReveal = useScrollReveal();
-  const { setRef, visibleItems } = useScrollRevealMany(portfolioItems.length);
+  const { setRef, visibleItems } = useScrollRevealMany<HTMLAnchorElement>(portfolioItems.length);
 
   return (
     <section className="py-16 sm:py-20 lg:py-28 bg-background relative overflow-hidden">

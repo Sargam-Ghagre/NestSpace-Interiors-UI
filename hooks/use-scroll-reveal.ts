@@ -40,9 +40,12 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
   return { ref, isVisible }
 }
 
-export function useScrollRevealMany(count: number, options: UseScrollRevealOptions = {}) {
+export function useScrollRevealMany<T extends HTMLElement = HTMLElement>(
+  count: number,
+  options: UseScrollRevealOptions = {}
+) {
   const { threshold = 0.1, rootMargin = "0px 0px -50px 0px", once = true } = options
-  const refs = useRef<(HTMLElement | null)[]>([])
+  const refs = useRef<(T | null)[]>([])
   const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(count).fill(false))
 
   useEffect(() => {
@@ -80,7 +83,7 @@ export function useScrollRevealMany(count: number, options: UseScrollRevealOptio
     return () => observers.forEach((obs) => obs.disconnect())
   }, [count, threshold, rootMargin, once])
 
-  const setRef = (index: number) => (el: HTMLElement | null) => {
+  const setRef = (index: number) => (el: T | null) => {
     refs.current[index] = el
   }
 
