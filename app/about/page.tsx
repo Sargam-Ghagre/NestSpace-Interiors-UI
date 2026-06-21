@@ -62,7 +62,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-secondary/30">
         <div className="container mx-auto px-4 lg:px-8">
@@ -75,10 +75,16 @@ export default function AboutPage() {
                 Creating Spaces That Inspire
               </h1>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                Founded in 2009, NestSpace Interiors has been at the forefront of luxury interior design, transforming spaces into personalized sanctuaries that reflect our clients' unique personalities and lifestyles.
+                Founded in 2009, NestSpace Interiors has been at the forefront
+                of luxury interior design, transforming spaces into personalized
+                sanctuaries that reflect our clients' unique personalities and
+                lifestyles.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Our team of passionate designers and architects work together to create harmonious spaces that balance aesthetics with functionality, bringing your vision to life with meticulous attention to detail.
+                Our team of passionate designers and architects work together to
+                create harmonious spaces that balance aesthetics with
+                functionality, bringing your vision to life with meticulous
+                attention to detail.
               </p>
             </div>
             <div className="relative aspect-4/3 rounded-lg overflow-hidden">
@@ -105,16 +111,29 @@ export default function AboutPage() {
                 A Journey of Design Excellence
               </h2>
             </div>
-            
+
             <div className="prose prose-lg max-w-none">
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                NestSpace began as a small design studio with a big dream: to create interiors that would not only be beautiful but would also enhance the quality of life for those who inhabit them. Our founder, Alexandra Bennett, started with a simple belief that great design has the power to transform not just spaces, but lives.
+                NestSpace began as a small design studio with a big dream: to
+                create interiors that would not only be beautiful but would also
+                enhance the quality of life for those who inhabit them. Our
+                founder, Alexandra Bennett, started with a simple belief that
+                great design has the power to transform not just spaces, but
+                lives.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                Over the years, we've grown from a two-person team to a full-service design firm, completing over 500 projects across residential and commercial sectors. What hasn't changed is our commitment to personalized service and our passion for creating spaces that tell a story.
+                Over the years, we've grown from a two-person team to a
+                full-service design firm, completing over 500 projects across
+                residential and commercial sectors. What hasn't changed is our
+                commitment to personalized service and our passion for creating
+                spaces that tell a story.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Today, NestSpace is recognized as a leader in luxury interior design, known for our ability to blend timeless elegance with contemporary innovation. We continue to push boundaries while staying true to our core values of excellence, innovation, and heartfelt service.
+                Today, NestSpace is recognized as a leader in luxury interior
+                design, known for our ability to blend timeless elegance with
+                contemporary innovation. We continue to push boundaries while
+                staying true to our core values of excellence, innovation, and
+                heartfelt service.
               </p>
             </div>
           </div>
@@ -131,9 +150,14 @@ export default function AboutPage() {
                 <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                   <Target className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">Our Mission</h3>
+                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
+                  Our Mission
+                </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  To create thoughtfully designed spaces that enhance the quality of life, reflect individual personalities, and stand the test of time. We believe every space has the potential to inspire and uplift.
+                  To create thoughtfully designed spaces that enhance the
+                  quality of life, reflect individual personalities, and stand
+                  the test of time. We believe every space has the potential to
+                  inspire and uplift.
                 </p>
               </CardContent>
             </Card>
@@ -144,9 +168,13 @@ export default function AboutPage() {
                 <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                   <Eye className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">Our Vision</h3>
+                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
+                  Our Vision
+                </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  To be the most trusted name in luxury interior design, known for our innovative approach, exceptional craftsmanship, and unwavering commitment to client satisfaction.
+                  To be the most trusted name in luxury interior design, known
+                  for our innovative approach, exceptional craftsmanship, and
+                  unwavering commitment to client satisfaction.
                 </p>
               </CardContent>
             </Card>
@@ -165,16 +193,24 @@ export default function AboutPage() {
               What Drives Us
             </h2>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {values.map((value) => (
-              <div key={value.title} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-semibold text-xl text-foreground mb-3">{value.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-              </div>
+              <Card
+                key={value.title}
+                className="bg-card border-border text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <CardContent className="p-10">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                    <value.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-xl text-foreground mb-3">
+                    {value.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {value.description}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -191,13 +227,17 @@ export default function AboutPage() {
               Meet the Experts
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Our talented team brings together diverse expertise and a shared passion for exceptional design.
+              Our talented team brings together diverse expertise and a shared
+              passion for exceptional design.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member) => (
-              <Card key={member.name} className="bg-card border-border overflow-hidden group">
+              <Card
+                key={member.name}
+                className="bg-card border-border overflow-hidden group"
+              >
                 <div className="relative aspect-3/4 overflow-hidden">
                   <Image
                     src={member.image}
@@ -207,9 +247,15 @@ export default function AboutPage() {
                   />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg text-foreground mb-1">{member.name}</h3>
-                  <p className="text-primary text-sm font-medium mb-3">{member.role}</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
+                  <h3 className="font-semibold text-lg text-foreground mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-primary text-sm font-medium mb-3">
+                    {member.role}
+                  </p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {member.bio}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -261,5 +307,5 @@ export default function AboutPage() {
       <CTASection />
       <Footer />
     </main>
-  )
+  );
 }
