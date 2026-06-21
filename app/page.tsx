@@ -8,6 +8,8 @@ import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { StatsSection } from "@/components/home/stats-section";
 import { CTASection } from "@/components/home/cta-section";
 import { ProcessSection } from "@/components/home/process-section";
+import { ScrollToTop } from "@/components/scroll-to-top";
+import { FAQSection } from "@/components/home/faq-section";
 
 export const metadata: Metadata = {
   title: "NestSpace Interiors | Design Your Dream Space",
@@ -31,6 +33,7 @@ export default function HomePage() {
       <PortfolioSection />
       <StatsSection />
       <TestimonialsSection />
+      <FAQSection/>
       <CTASection />
       <Footer />
     </main>
