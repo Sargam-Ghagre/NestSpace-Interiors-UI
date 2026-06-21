@@ -36,7 +36,6 @@ export default function HomePage() {
       <FAQSection/>
       <CTASection />
       <Footer />
-      <ScrollToTop />
     </main>
   );
 }
