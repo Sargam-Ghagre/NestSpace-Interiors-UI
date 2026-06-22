@@ -96,6 +96,7 @@ export function PortfolioGallery({ items, categories }: PortfolioGalleryProps) {
                   alt={item.title}
                   fill
                   className="object-cover"
+                  style={{ viewTransitionName: `project-${item.id}` } as React.CSSProperties}
                 />
                 
                 {/* Overlay */}
