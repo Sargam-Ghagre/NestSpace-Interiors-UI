@@ -48,6 +48,11 @@ git checkout -b feat/your-feature-name
 
 ### Step 3: Implement and Test
 * Install dependencies and run locally using `pnpm install` and `pnpm dev`.
+* Optionally install the Next.js AI agent docs (AGENTS.md) to give AI coding assistants project context:
+  ```bash
+  pnpm install-nextjs-docs
+  ```
+  This runs `npx @next/codemod@canary agents-md` and generates an `AGENTS.md` file with Next.js-specific guidance. Useful when using AI tools like Claude Code, Copilot, or Cursor.
 * Test responsiveness and layout alignment on multiple viewport resolutions.
 * Run the linter to ensure code standards are met:
   ```bash
