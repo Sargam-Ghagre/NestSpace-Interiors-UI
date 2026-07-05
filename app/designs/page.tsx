@@ -1,10 +1,47 @@
+import { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/home/cta-section"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { DesignsGallery } from "./designs-gallery"
 
+export const metadata: Metadata = {
+  title: "Design Gallery",
+  description:
+    "Browse our curated gallery of interior design inspirations — living rooms, bedrooms, kitchens, bathrooms, and more. Find your perfect aesthetic.",
+  keywords: [
+    "interior design gallery",
+    "design inspiration",
+    "home decor ideas",
+    "room designs",
+    "luxury interiors gallery",
+  ],
+  openGraph: {
+    title: "Design Gallery | NestSpace Interiors",
+    description:
+      "Browse our curated gallery of interior design inspirations — living rooms, bedrooms, kitchens, and more.",
+    url: "https://nestspace-interiors.vercel.app/designs",
+    type: "website",
+    images: [
+      {
+        url: "/images/portfolio-2.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NestSpace Interiors Design Gallery",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Design Gallery | NestSpace Interiors",
+    description:
+      "Browse our curated gallery of interior design inspirations — living rooms, bedrooms, kitchens, and more.",
+    images: ["/images/portfolio-2.jpg"],
+  },
+}
+
 const categories = ["All", "Living Room", "Bedroom", "Kitchen", "Bathroom", "Office", "Dining", "Luxury"]
+
 
 const allDesigns = [
   { id: 1, title: "Contemporary Living Space", category: "Living Room", image: "/images/portfolio-1.jpg", size: "tall" },

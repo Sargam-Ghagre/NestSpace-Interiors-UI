@@ -13,6 +13,35 @@ export const metadata: Metadata = {
   title: "Our Design Services",
   description:
     "From luxury residential styling to modern corporate office design, explore our full suite of interior architecture services.",
+  keywords: [
+    "interior design services",
+    "home interior design",
+    "office interior design",
+    "modular kitchen design",
+    "luxury interior services",
+  ],
+  openGraph: {
+    title: "Our Design Services | NestSpace Interiors",
+    description:
+      "From luxury residential styling to modern corporate office design, explore our full suite of interior architecture services.",
+    url: "https://nestspace-interiors.vercel.app/services",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero-interior.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NestSpace Interiors Design Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Design Services | NestSpace Interiors",
+    description:
+      "From luxury residential styling to modern corporate office design, explore our full suite of interior architecture services.",
+    images: ["/images/hero-interior.jpg"],
+  },
 };
 
 const services = [
