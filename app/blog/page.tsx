@@ -1,53 +1,60 @@
 "use client"
 
-import { useState, useRef, useCallback } from "react"
+import { useState, useRef, useCallback, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/home/cta-section"
-import { Calendar, Clock, ArrowRight, Search } from "lucide-react"
+import { Calendar, Clock, ArrowRight, Search, X } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { blogPosts, featuredPost } from "@/lib/blog-data"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
+import { useBlogFilters } from "@/hooks/use-blog-filters"
 
 const categories = ["All", ...Array.from(new Set(blogPosts.map((post) => post.category)))]
 
 export default function BlogPage() {
-  const [activeCategory, setActiveCategory] = useState("All")
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
-  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const { category, search, filteredPosts, isFiltered, setCategory, setSearch, clearFilters } =
+    useBlogFilters()
 
-  const handleFilterChange = (category: string) => {
+  // Local input value for instant visual feedback while debouncing URL updates
+  const [inputValue, setInputValue] = useState(search)
+  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  // Sync local input when URL search param changes externally (e.g., browser Back)
+  useEffect(() => {
+    setInputValue(search)
+  }, [search])
+
+  const handleFilterChange = (cat: string) => {
     setIsTransitioning(true)
     setTimeout(() => {
-      setActiveCategory(category)
+      setCategory(cat)
       setIsTransitioning(false)
     }, 200)
   }
 
-  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    if (debounceTimer.current) clearTimeout(debounceTimer.current)
-    debounceTimer.current = setTimeout(() => {
-      setSearchQuery(value)
-    }, 200)
-  }, [])
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value
+      setInputValue(value)
+      if (debounceTimer.current) clearTimeout(debounceTimer.current)
+      debounceTimer.current = setTimeout(() => {
+        setSearch(value)
+      }, 300)
+    },
+    [setSearch]
+  )
 
-  const latestPosts = blogPosts.slice(1)
-  const filteredPosts = latestPosts.filter((post) => {
-    const matchesCategory = activeCategory === "All" || post.category === activeCategory
-    const query = searchQuery.trim().toLowerCase()
-    const matchesSearch =
-      query === "" ||
-      post.title.toLowerCase().includes(query) ||
-      post.excerpt.toLowerCase().includes(query) ||
-      post.category.toLowerCase().includes(query)
-    return matchesCategory && matchesSearch
-  })
+  const handleClear = () => {
+    setInputValue("")
+    if (debounceTimer.current) clearTimeout(debounceTimer.current)
+    clearFilters()
+  }
 
   return (
     <main className="min-h-screen bg-background">
@@ -112,6 +119,7 @@ export default function BlogPage() {
                 id="blog-search"
                 type="search"
                 placeholder="Search articles by title, topic, or keyword…"
+                value={inputValue}
                 onChange={handleSearchChange}
                 className="pl-9 h-11 rounded-full bg-background border-border/60 focus-visible:border-primary focus-visible:ring-primary/20 text-sm"
               />
@@ -119,23 +127,37 @@ export default function BlogPage() {
 
             {/* Category filter buttons */}
             <div className="flex flex-wrap justify-center gap-2">
-              {categories.map((category) => (
+              {categories.map((cat) => (
                 <Button
-                  key={category}
+                  key={cat}
                   variant="ghost"
-                  onClick={() => handleFilterChange(category)}
+                  onClick={() => handleFilterChange(cat)}
                   size="sm"
                   className={cn(
                     "px-5 h-10 rounded-full text-sm font-medium transition-all duration-300",
-                    activeCategory === category
+                    category === cat
                       ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
                       : "bg-muted text-muted-foreground hover:bg-muted hover:text-foreground"
                   )}
                 >
-                  {category}
+                  {cat}
                 </Button>
               ))}
             </div>
+
+            {/* Clear filters — shown only when at least one filter is active */}
+            {isFiltered && (
+              <Button
+                id="blog-clear-filters"
+                variant="ghost"
+                size="sm"
+                onClick={handleClear}
+                className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground h-9 px-4 rounded-full border border-border/60"
+              >
+                <X className="h-3.5 w-3.5" />
+                Clear filters
+              </Button>
+            )}
           </div>
 
           {filteredPosts.length === 0 ? (
@@ -147,6 +169,14 @@ export default function BlogPage() {
               <p className="text-muted-foreground text-sm max-w-xs">
                 No posts match your current search or filter. Try a different keyword or select another category.
               </p>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleClear}
+                className="mt-2 rounded-full"
+              >
+                Reset filters
+              </Button>
             </div>
           ) : (
             <div className={cn(
