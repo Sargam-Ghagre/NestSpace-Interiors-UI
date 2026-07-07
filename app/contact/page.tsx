@@ -25,20 +25,23 @@ const contactInfo = [
     value: "hello@nestspace.com",
     href: "mailto:hello@nestspace.com",
     copyable: true,
+    copyLabel: "email address",
   },
   {
     icon: Phone,
     label: "Phone",
     value: "+1 (234) 567-890",
     href: "tel:+1234567890",
-    copyable: false,
+    copyable: true,
+    copyLabel: "phone number",
   },
   {
     icon: MapPin,
     label: "Address",
     value: "123 Design Street, Creative District, NY 10001",
     href: "#map",
-    copyable: false,
+    copyable: true,
+    copyLabel: "studio address",
   },
   {
     icon: Clock,
@@ -46,6 +49,7 @@ const contactInfo = [
     value: "Mon - Fri: 9AM - 6PM",
     href: null,
     copyable: false,
+    copyLabel: "",
   },
 ]
 
@@ -198,7 +202,7 @@ export default function ContactPage() {
                           <p className="font-medium text-foreground">{item.value}</p>
                         )}
                         {item.copyable && (
-                          <CopyButton text={item.value} label="email address" />
+                          <CopyButton text={item.value} label={item.copyLabel} />
                         )}
                       </div>
                     </div>
