@@ -142,11 +142,31 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     const formData = { firstName, lastName, email, phone, service, budget, message }
-    console.log("Contact form submission:", formData)
 
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setErrors({ message: result.error || "Failed to submit form" })
+        setIsSubmitting(false)
+        return
+      }
+
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error("Contact form error:", error)
+      setErrors({ message: "An error occurred. Please try again." })
+      setIsSubmitting(false)
+    }
   }
 
   return (
