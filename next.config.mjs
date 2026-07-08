@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   images: {
-    unoptimized: true,
+    unoptimized: false,
   },
   experimental: {
     viewTransition: true,
   },
+  serverExternalPackages: ['recharts'],
 }
 
 export default nextConfig
