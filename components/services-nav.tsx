@@ -66,6 +66,7 @@ export function ServicesNav() {
         const el = document.getElementById(item.id)
         if (el) observer.unobserve(el)
       })
+      observer.disconnect()
     }
   }, [])
 
