@@ -8,6 +8,7 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import { ArrowLeft, ArrowRight, Calendar, MapPin, Ruler, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ShareBar } from "@/components/blog/share-bar"
+import { JsonLd } from "@/components/json-ld"
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -64,10 +65,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
   return (
     <main className="min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
-      />
+      <JsonLd data={jsonLd} />
       <RecordProjectView id={id} />
       <Navigation />
       

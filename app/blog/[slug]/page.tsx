@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/home/cta-section"
 import { ShareBar } from "@/components/blog/share-bar"
 import { ReadingProgress } from "@/components/blog/reading-progress"
+import { JsonLd } from "@/components/json-ld"
 import { blogPosts, getBlogPostBySlug } from "@/lib/blog-data"
 import { RelatedPosts } from "@/components/blog/related-posts"
 import {
@@ -57,10 +58,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
   return (
     <main className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
-      />
+      <JsonLd data={jsonLd} />
       <ReadingProgress />
       <Navigation />
 
