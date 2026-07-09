@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
 import { blogPosts } from '@/lib/blog-data'
 import { projects } from '@/lib/portfolio-data'
+import { getSiteUrl } from '@/lib/url'
 
-const BASE_URL = 'https://nestspace-interiors.vercel.app'
+const BASE_URL = getSiteUrl()
 
 const STATIC_ROUTES = [
   '/',

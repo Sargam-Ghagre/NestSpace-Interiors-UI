@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { absoluteUrl } from "@/lib/url"
 
 export const metadata: Metadata = {
   title: "Interior Design Blog",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     title: "Interior Design Blog | NestSpace Interiors",
     description:
       "Expert interior design tips, trends, and inspiration from the NestSpace Interiors team.",
-    url: "https://nestspace-interiors.vercel.app/blog",
+    url: absoluteUrl("/blog"),
     type: "website",
     images: [
       {

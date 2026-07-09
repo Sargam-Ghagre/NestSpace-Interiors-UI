@@ -3,6 +3,7 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/home/cta-section"
 import { ScrollReveal } from "@/components/scroll-reveal"
+import { absoluteUrl } from "@/lib/url"
 import { DesignsGallery } from "./designs-gallery"
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     title: "Design Gallery | NestSpace Interiors",
     description:
       "Browse our curated gallery of interior design inspirations — living rooms, bedrooms, kitchens, and more.",
-    url: "https://nestspace-interiors.vercel.app/designs",
+    url: absoluteUrl("/designs"),
     type: "website",
     images: [
       {
