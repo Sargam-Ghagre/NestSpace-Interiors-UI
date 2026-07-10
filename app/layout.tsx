@@ -6,6 +6,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { MobileCtaButton } from "@/components/mobile-cta-button";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ConditionalAnalytics } from "@/components/conditional-analytics";
+import { getSiteUrl } from "@/lib/url";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,7 +29,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nestspace-interiors.vercel.app/"),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "NestSpace Interiors | Premium Interior Design",
     template: "%s | NestSpace Interiors", // Automatically formats child pages like "About | NestSpace Interiors"

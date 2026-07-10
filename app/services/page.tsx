@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Metadata } from 'next'
 import { ServicesNav } from "@/components/services-nav"
+import { absoluteUrl } from "@/lib/url"
 
 export const metadata: Metadata = {
   title: "Our Design Services",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     title: "Our Design Services | NestSpace Interiors",
     description:
       "From luxury residential styling to modern corporate office design, explore our full suite of interior architecture services.",
-    url: "https://nestspace-interiors.vercel.app/services",
+    url: absoluteUrl("/services"),
     type: "website",
     images: [
       {

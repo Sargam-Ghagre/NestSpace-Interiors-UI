@@ -26,12 +26,9 @@ export function CookieBanner() {
 
     const consent = localStorage.getItem("nestspace-cookie-consent") || getCookie("nestspace-cookie-consent")
 
+    // Show banner immediately if no consent - no delay for GDPR compliance
     if (!consent) {
-      // Delay showing the banner slightly for a premium feel
-      const timer = setTimeout(() => {
-        setIsVisible(true)
-      }, 1000)
-      return () => clearTimeout(timer)
+      setIsVisible(true)
     }
   }, [])
 

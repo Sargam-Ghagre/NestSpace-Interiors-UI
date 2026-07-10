@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
-
-const BASE_URL = 'https://nestspace-interiors.vercel.app'
+import { getSiteUrl } from '@/lib/url'
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = getSiteUrl()
   return {
     rules: [
       {
@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    sitemap: `${baseUrl}/sitemap.xml`,
   }
 }
